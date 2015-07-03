@@ -1,0 +1,36 @@
+<!doctype html>
+<html ng-app="myApp" lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+		<script src="js/todo.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/app.css">
+	</head>
+	<body>
+		<div ng-controller="TodoCtrl">
+			<h2>Total todos: {{ getTotalTodos() }}</h2>
+			<h2>Uncomleted todos: {{ getUncompletedTodos() }}</h2>
+			<ul class="list-unstyled">
+				<li ng-repeat="todo in todos">
+					<input type='checkbox' ng-model="todo.done">
+					<span class="todo-{{todo.done}}">{{todo.text}}</span>
+				</li>
+			</ul>
+			<form class="form-horizontal">
+				<input type="text" ng-model="formTodoText">
+				<button class="btn" ng-click="addTodo()">
+					<i class="glyphicon-plus"></i>
+					Add New Todo
+				</button>
+				<button class="btn" ng-click="clearCompleted()">
+					<i class="glyphicon-trash"></i>
+					Clear Completed Todos
+				</button>
+			</form>
+		</div>
+	</body>
+</html>
